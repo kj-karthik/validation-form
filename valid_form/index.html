@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Form Validator</title>
+  </head>
+  <body>
+    <div class="container">
+      <form method="post" id="form" class="form" name="google-sheet">
+        <h2>AlignBox</h2>
+        <div class="form-control">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Enter username" name="Name" />
+          <small>Error Message</small>
+        </div>
+
+        <div class="form-control">
+          <label for="email">Email</label>
+          <input type="text" id="email" placeholder="Enter email" name="email"/>
+          <small>Error Message</small>
+        </div>
+
+        
+        <div class="form-control">
+            <label for="phone">phone</label>
+            <input type="tel" id="phone" placeholder="Enter Mobile Number" name="phone" />
+            <small>Error Message</small>
+          </div>
+
+
+        <div class="form-control">
+        <input type="file" id="image" accept="image/*" maxlength="10" minlength="10" name="image">
+        <small>Error Message</small>
+           </div>
+        
+        <button>Submit</button>
+      </form>
+    </div>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwx24a1i5RxoCeyy_nSmPQsQqR7blLLnvDFnC49NtX4r9yDp12rbyOch-Dud7WgxqUnmQ/exec'
+        const form = document.forms['google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+    <script src="script.js"></script>
+  </body>
+</html>
+
